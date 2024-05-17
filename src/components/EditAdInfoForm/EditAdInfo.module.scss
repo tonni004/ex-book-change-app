@@ -1,0 +1,14 @@
+@import "../Modal/Modal.module.scss";
+
+.AdPhotoField {
+composes:AdPhotoField;
+}
+.AdFileInputBtn {
+composes:AdFileInputBtn;
+}
+.PhotoCameraIcon {
+    composes: PhotoCameraIcon;
+}
+.RadioGroup {
+    composes: RadioGroup;
+}

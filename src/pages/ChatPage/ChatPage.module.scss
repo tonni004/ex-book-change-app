@@ -1,0 +1,220 @@
+@import '../../styles/variables.scss';
+@import '../SearchPage/SearchPage.module.scss';
+.ChatHeader {
+    position: relative;
+    display: flex;
+    padding: 15px 15px;
+    margin: 15px 0;
+    border-radius: 10px;
+    
+    background-color: rgba(255, 255, 255, 0.391);
+}
+
+.ChatImage {
+    margin-right: 20px;
+    border-radius: 50%;
+    height: 70px;
+    width: 70px;
+}
+
+.ChatInfoField {
+    h3 {
+        margin-bottom: 10px;
+        font-size: 18px;
+        font-weight: 300;
+    }
+    p {
+        text-align: right;
+        font-size: 16px;
+    }
+}
+
+.OtherUserLink {
+    text-decoration: underline;
+    color: $formLinkColor;
+}
+
+// .ChatMenuBtn {
+//     border-radius: 50%;
+//     position: absolute;
+//     top: 5px;
+//     right: 5px;
+
+//     width: 30px;
+//     height: 30px;
+//     font-size: 19px;
+//     font-weight: 600;
+//     background-color: rgba(255, 255, 255, 0.451);
+// }
+
+.FildWithoutMessage {
+    height: 400px;
+}
+
+.ScrollShadowContainer {
+    padding-bottom: 15px;
+    --scroll-shadow-size: 30px; 
+    width: 100%;
+    height: 400px; 
+    overflow-y: auto;
+    mask-image: linear-gradient(to bottom, transparent, black var(--scroll-shadow-size), black calc(100% - var(--scroll-shadow-size)), transparent);
+
+    &[data-top-scroll="true"] {
+        mask-image: linear-gradient(to bottom, transparent, black var(--scroll-shadow-size), black calc(100% - var(--scroll-shadow-size)), transparent);
+    }
+
+    &[data-bottom-scroll="true"] {
+        mask-image: linear-gradient(to bottom, transparent, black var(--scroll-shadow-size), black calc(100% - var(--scroll-shadow-size)), transparent);
+    }
+
+    &[data-top-scroll="true"][data-bottom-scroll="true"] {
+        mask-image: linear-gradient(to bottom, transparent, black var(--scroll-shadow-size), black calc(100% - var(--scroll-shadow-size)), transparent);
+    }
+}
+
+.ChatItem {
+    display: flex;
+
+    div {
+        display: inline-block;
+        padding: 5px 10px;
+        border-radius: 25px;
+        margin-bottom: 8px;  
+        max-width: 70%;
+
+        .MessageText {
+        display: inline-block;
+        align-self: flex-end;
+    }
+    }
+}
+
+.MyMessageStyle {
+    border: 1px solid white;
+    background-color: rgba(255, 255, 255, 0.451);
+}
+        
+.OtherMessageStyle {
+    border: 1px solid $danger-color;
+    background-color: rgba(243, 18, 97, 0.621);
+    color: white;
+}
+
+.MyMessage {
+    justify-content: flex-end;
+    align-items: flex-end;
+    animation: show-chat-otheUserMessage 0.15s 1 ease-in;
+}
+
+.OtherMessage {
+    justify-content: flex-start;
+    align-items: flex-start;
+    animation: show-chat-myMessage 0.15s 1 ease-in;
+}
+
+.MessageTime {
+    margin-left: 10px;
+    font-size: 10px;
+}
+
+.InputField {
+    margin-top: 15px;
+    position: relative;
+    width: 100%;
+
+    .Textarea {
+        padding: 7px 15px;
+        padding-right: 75px;
+        border-radius: 10px;
+
+        width: 100%;
+        height: 44px;
+        resize: none;
+        background-color: rgba(255, 255, 255, 0.473);
+        color: #000;
+    }
+}
+
+.SendBtn {
+    position: absolute;
+    bottom: 11px;
+    right: 5px;
+
+    display: inline-block;
+    width: 35px;
+    height: 35px;
+
+    border-radius: 50%;
+    font-size: 21px;
+    font-weight: 200;
+    background-color: $danger-color;
+    color: white;
+}
+.NotFoundImg {
+    composes: NotFoundImg;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+// Animation
+
+@keyframes show-chat-otherUserMessage {
+    0% {
+        margin-left: -480px;
+    }
+
+    100% {
+        margin-left: 0;
+    }
+}
+
+@-moz-keyframes show-chat-otherUserMessage {
+    0% {
+        margin-left: -480px;
+    }
+
+    100% {
+        margin-left: 0;
+    }
+}
+
+@-webkit-keyframes show-chat-otherUserMessage {
+    0% {
+        margin-left: -480px;
+    }
+
+    100% {
+        margin-left: 0;
+    }
+}
+
+@keyframes show-chat-myMessage {
+    0% {
+        margin-right: -480px;
+    }
+
+    100% {
+        margin-right: 0;
+    }
+}
+
+@-moz-keyframes show-chat-myMessage {
+    0% {
+        margin-right: -480px;
+    }
+
+    100% {
+        margin-right: 0;
+    }
+}
+
+@-webkit-keyframes show-chat-myMessage {
+    0% {
+        margin-right: -480px;
+    }
+
+    100% {
+        margin-right: 0;
+    }
+}

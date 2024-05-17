@@ -1,0 +1,36 @@
+.Title {
+  margin-bottom: 20px;
+  font-size: 25px;
+  font-weight: 400;
+  text-align: center;
+}
+
+.LogInRoute {
+  margin-bottom: 15px;
+  display: flex;
+  align-items: center;
+}
+.LogInRoute p {
+  margin: 0;
+  margin-right: 10px;
+}
+.LogInRoute a {
+  text-decoration: underline;
+  color: rgb(84, 64, 196);
+}
+
+.SubmitButton {
+  margin-top: 50px;
+  margin-bottom: 0px;
+  border: 1px solid black;
+  border-radius: 18px;
+  padding: 8px 0;
+  width: 100%;
+  font-weight: 300;
+  transition: transform 250ms ease-in-out, color 250ms ease-in-out;
+}
+.SubmitButton:hover, .SubmitButton:focus {
+  transform: scale(0.9);
+  background-color: black;
+  color: white;
+}/*# sourceMappingURL=Form.module.css.map */

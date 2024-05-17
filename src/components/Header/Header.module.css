@@ -1,0 +1,26 @@
+.HeaderField {
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+}
+
+.Logo {
+  animation: rotate 5s linear infinite;
+}
+
+.Title {
+  padding-top: 5px;
+  margin: 0 0;
+  font-size: 22px;
+  font-family: "Merienda", cursive;
+  font-weight: 700;
+}
+
+@keyframes rotate {
+  0%, 100% {
+    transform: rotate(-20deg);
+  }
+  50% {
+    transform: rotate(20deg);
+  }
+}/*# sourceMappingURL=Header.module.css.map */

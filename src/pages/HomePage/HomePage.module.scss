@@ -1,0 +1,62 @@
+@import '../../styles/variables';
+@import '../../components/StyledContainer/StyledContainer.module.scss';
+
+.HomePageField {
+    position: relative;
+}
+.DescriptionField {
+    composes: StyledContainer; 
+    margin-bottom: 55px;
+}
+
+.BookcaseImgFiels{
+    display: flex;
+    justify-content: flex-end;
+}
+.BookcaseImg {
+    width: 50%;
+    opacity: 0.85;
+}
+
+.BtnFieldTitle {
+    margin-top: 40px;
+    margin-bottom: 50px;
+    text-align: center;
+    font-family: "Merienda", cursive;
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.BtnLinkField {
+
+    & li:not(:last-child){
+        margin-bottom: 15px;
+    }
+    & li {
+        border-radius: $btnBorderRadius;
+        border: 1px solid black;
+
+        background-color: transparent;
+        transition: background-color 250ms ease-in-out;
+    }
+    & a {
+        display: block;
+        padding: 10px 30px;
+        font-weight: 300;
+        text-align: center;
+        text-transform: uppercase;
+        color: black;
+        transition: color 250ms ease-in-out;
+    }
+
+    & li:hover, 
+    & li:focus { 
+        background-color: black; 
+
+        & a {
+            color: white;
+        }
+    }
+}
+
+ 

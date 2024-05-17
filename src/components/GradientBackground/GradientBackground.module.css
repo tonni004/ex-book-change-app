@@ -1,0 +1,89 @@
+.Gradient {
+  width: 400%;
+  min-height: 100vh;
+  position: absolute;
+  top: 0%;
+  left: 0%;
+  z-index: -1;
+  background-image: linear-gradient(-58.2deg, rgba(40, 91, 212, 0.73) -3%, rgba(171, 53, 163, 0.45) 49.3%, rgba(255, 204, 112, 0.37) 97.7%);
+  background-size: 200% 200%;
+  overflow: hidden;
+  animation: gradient 10s ease infinite;
+}
+.Gradient span {
+  position: absolute;
+  height: 250px;
+  width: 250px;
+  border-radius: 50%;
+}
+
+.CircleUp {
+  background-image: linear-gradient(64.3deg, rgba(251, 105, 139, 0.81) 17.7%, rgb(251, 194, 108) 64.7%, rgba(156, 244, 146, 0.64) 112.1%);
+  filter: blur(80px);
+  animation: down 40s infinite;
+}
+
+.CircleDown {
+  background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(121, 53, 222, 0.81) 0%, rgb(218, 61, 221) 70%);
+  filter: blur(95px);
+  animation: up 15s infinite;
+}
+
+.CircleLeft {
+  background-image: linear-gradient(64.3deg, rgba(235, 79, 115, 0.72) 17.7%, rgba(231, 183, 110, 0.888) 64.7%, rgba(172, 253, 163, 0.64) 112.1%);
+  filter: blur(85px);
+  animation: left 20s 1s infinite;
+}
+
+.CircleRight {
+  background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(134, 69, 231, 0.81) 0%, rgb(239, 98, 241) 80%);
+  filter: blur(95px);
+  animation: right 15s 2s infinite;
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+@keyframes down {
+  0%, 100% {
+    top: -100px;
+    left: 15%;
+  }
+  70% {
+    top: 200px;
+  }
+}
+@keyframes up {
+  0%, 100% {
+    left: -2%;
+    bottom: 200px;
+  }
+  70% {
+    bottom: -250px;
+  }
+}
+@keyframes left {
+  0%, 100% {
+    left: -100px;
+  }
+  70% {
+    left: 600px;
+  }
+}
+@keyframes right {
+  0%, 100% {
+    top: 28%;
+    left: -50px;
+  }
+  70% {
+    left: 500px;
+  }
+}/*# sourceMappingURL=GradientBackground.module.css.map */

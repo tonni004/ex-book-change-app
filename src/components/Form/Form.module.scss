@@ -1,0 +1,41 @@
+@import '../../styles/variables';
+.Title {
+    margin-bottom: 20px;
+    font-size: 25px;
+    font-weight: 400;
+    text-align: center;
+}
+
+.LogInRoute {
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+
+    & p {
+        margin: 0;
+        margin-right: 10px;
+    }
+
+    & a {
+        text-decoration: underline;
+        color: $formLinkColor;
+    }
+}
+
+.SubmitButton {
+    margin-top: 50px;
+    margin-bottom: 0px;
+    border: 1px solid black;
+    border-radius: $btnBorderRadius;
+    padding: 8px 0;
+    width: 100%;
+    font-weight: 300;
+    transition: color 250ms ease-in-out;
+
+    &:hover,
+    &:focus {
+        background-color: black;
+        color: white;
+    }
+
+}

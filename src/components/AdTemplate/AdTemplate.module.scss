@@ -1,0 +1,106 @@
+@import '../../styles/variables';
+.CardsField {
+    margin-top: 35px;
+    margin-bottom: 30px;
+}
+.CardItem:not(:last-child) {
+margin-bottom: 30px;
+}
+.Card {
+    position: relative;
+}
+
+.CardTitle {
+    text-align: left;
+    width: 87%;
+    h3 {
+         font-size: 18px; 
+    }
+    p {
+        margin-top: 5px;
+    }
+}
+
+.AdTitle {
+    font-size: 20px;
+    margin-bottom: 20px;
+    font-weight: 600;
+}
+
+.AdImage {
+    width: 100%;
+    // height: 400px;
+    object-fit: cover;
+    object-position: center;
+    z-index: 2;
+}
+// icon
+.IconBtn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 988;
+}
+
+.PencilIcon {
+    svg{
+        width: 20px;
+        height: 20px;
+    }
+}
+.HeartIcon {
+    svg {
+        width: 20px;
+        height: 20px;
+       &> path{
+            fill: $danger-color;
+        }
+    }
+}
+
+// Modal
+
+.CardModal {
+    padding: 30px 0px;
+
+    transition: background-color 300ms ease-in, color 300ms ease-in;
+
+    backdrop-filter: blur(8px);
+    background-color: rgba(0, 0, 0, 0.522);
+    width: 100%;
+    height: 100%;
+
+    color: white;
+    overflow-y: scroll;
+
+    h2 {
+        margin-bottom: 30px;
+        font-size: 28px;
+        font-weight: 500;
+    }
+}
+
+.AdDescription {
+    margin-bottom: 10px;
+}
+
+.AdPrice {
+    margin-bottom: 30px;
+    text-align: center;
+    font-weight: 600;
+    font-size: 25px;
+    span {
+        font-weight: 600;
+    }
+}
+
+.AdLinkField{
+    margin-top: 30px;
+    margin-bottom: 30px;
+    font-size: 17px;
+    text-align: right;
+}
+
+.AdAutherLink {
+    text-decoration: underline;
+}

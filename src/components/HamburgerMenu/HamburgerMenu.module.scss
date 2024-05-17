@@ -1,0 +1,118 @@
+@import '../../styles/variables';
+.MenuBtn {
+    position: absolute;
+    top: 20px;
+    right: 25px;
+}
+.MenuField {
+    padding: 15px 15px;
+    border: 1px solid #fff;
+    border-radius: 15px;
+    position: absolute;
+    top: 70px;
+    right: 20px;
+    z-index: 25;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100px;
+    transform: translateX(120%);
+    transition: transform 300ms ease-in;
+
+    &.open {
+            transform: translateX(0);
+        }
+}
+
+.MenuBackground {
+    border-radius: 15px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+    opacity: 0.1;
+    filter: blur(2px);
+    transition: opacity 300ms ease-in, filter 300ms ease-in;
+
+    .MenuField.open & {
+            opacity: 0.4;
+            filter: blur(4px);
+        }
+}
+.BtnList {
+
+    li:not(:last-child) {
+        margin-bottom: 10px;
+    }
+}
+
+// button
+.BtnField {
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: flex;
+    flex-direction: column;
+    width: 30px;
+    cursor: pointer;
+
+    li:not(:last-child) {
+        margin-bottom: 10px;
+    }
+}
+
+.BtnField span {
+    background:#fff;
+    border-radius: 10px;
+    height: 3px;
+    margin: 3px 0;
+    transition: .4s cubic-bezier(0.68, -0.6, 0.32, 1.6);
+}
+
+
+.BtnField span:nth-of-type(1) {
+    width: 50%;
+
+}
+
+.BtnField span:nth-of-type(2) {
+    width: 100%;
+}
+
+
+.BtnField span:nth-of-type(3) {
+    width: 75%;
+
+}
+
+
+input[type="checkbox"] {
+    display: none;
+}
+
+
+input[type="checkbox"]:checked~span:nth-of-type(1) {
+    transform-origin: bottom;
+    transform: rotatez(47deg) translate(3px, 0px)
+}
+
+
+input[type="checkbox"]:checked~span:nth-of-type(2) {
+
+    transform-origin: top;
+    transform: rotatez(-45deg)
+}
+
+
+input[type="checkbox"]:checked~span:nth-of-type(3) {
+
+    transform-origin: bottom;
+    width: 50%;
+    transform: translate(13px, -4px) rotatez(47deg);
+
+}
+

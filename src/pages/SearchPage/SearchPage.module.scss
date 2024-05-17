@@ -1,0 +1,80 @@
+.InputField {
+    margin-top: 25px;
+    border-radius: 8px;
+
+    position: relative;
+    background-color: rgba(0, 0, 0, 0.045);
+    box-shadow: 0px 5px 8px -2px rgba(0, 0, 0, 0.28);
+
+    & .Input:focus {
+        background-color: rgba(0, 0, 0, 0.055);
+        transition: background-color 300ms ease-in-out;
+    }
+}
+
+.SearchIcon {
+    position: absolute;
+    top: 50%;
+    left: 8px;
+    transform: translateY(-50%);
+}
+
+.CloseFilledIcon{
+    position: absolute;
+    top: 50%;
+    right: 10px;
+}
+
+.Input {
+    padding: 15px 35px;
+    border-radius: 8px;
+    width: 100%;
+    background-color: transparent;
+    font-size: 17px;
+    outline: none;
+
+    &::placeholder {
+    color: rgb(58, 57, 57);
+    font-size: 17px;
+    }
+
+}
+
+.SearchResultField {
+    margin-top: 40px;
+    display: flex;
+    justify-content: center;
+    & p {
+        font-weight: 400;
+        color: rgb(58, 57, 57);
+    }
+}
+
+.NotFoundField {
+    margin-top: 120px;
+    position: relative;
+    font-family: "Merienda", cursive;
+    width: 100%;
+    height: 400px;
+}
+.NotFoundImg {
+    position: absolute;
+    top: 0;
+    right: -13%;
+}
+.NotFoundFirstSpan{
+    position: absolute;
+    top: -9%;
+    left: 0%;
+    font-weight: 700;
+    font-size: 35px;
+
+}
+.NotFoundSecondSpan {
+    position: absolute;
+    top: 8%;
+    left: 29%;
+    font-weight: 500;
+    font-size: 17px;
+    transform: rotate(10deg);
+}

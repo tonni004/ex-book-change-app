@@ -1,0 +1,52 @@
+.ProfileField {
+    margin-top: 35px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}   
+.UserName {
+        margin: 0;
+        font-size: 28px;
+        font-weight: 500;
+}
+.ProfileAvatar {
+    margin: 20px 0;
+    border-radius: 50%;
+    object-fit: cover;
+    width: 100px;
+    height: 100px;
+}
+
+.ProfileDiscription {
+    padding: 10px 0px;
+    font-size: 20px;
+}
+
+.LocationField {
+    margin-top: 8px;
+    text-align: center;
+    font-size: 18px;
+}
+
+.BtnField {
+    margin-top: 20px;
+    display: flex;
+    & li:not(:last-child) {
+        margin-right: 20px;
+    }
+}
+
+.TabsFields {
+    margin-top: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.EmptyAdsField {
+    margin-top: 40px;
+    text-align: center;
+    font-size: 20px;
+    font-weight: 400;
+}

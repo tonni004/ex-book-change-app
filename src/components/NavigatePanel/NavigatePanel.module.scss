@@ -1,0 +1,32 @@
+@import '../../styles/variables';
+.TabsField {
+    padding: 10px 0;
+    position: sticky;
+    z-index: 9;
+    bottom: 0px;
+
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+
+
+    background-color: rgba(237, 237, 237, 0.691);
+    backdrop-filter: blur(5px);
+    & div {
+    color: black;
+    }
+
+    & a {
+        padding:10px 20px;
+    } 
+
+}
+.TabsFieldWithModal {
+    position: relative;
+    padding-left: 120px;
+    width: 400px;
+}
+
+
+

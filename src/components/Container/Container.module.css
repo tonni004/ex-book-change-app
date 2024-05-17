@@ -1,0 +1,13 @@
+.Container {
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 20px;
+  min-height: 100vh;
+  position: relative;
+  overflow: hidden;
+}
+@media screen and (min-width: 450px) {
+  .Container {
+    width: 450px;
+  }
+}/*# sourceMappingURL=Container.module.css.map */

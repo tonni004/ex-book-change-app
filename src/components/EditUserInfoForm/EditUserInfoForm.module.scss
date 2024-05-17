@@ -1,0 +1,33 @@
+.UserAvatarField {
+    margin: 10px 0;
+display: flex;
+justify-content: center;
+align-items: center;
+}
+.FileInputBtn{
+    display: inline-block;
+    border-radius: 50%;
+
+    position: relative;
+
+    width: 80px;
+    height: 80px;
+
+    img {
+        border-radius: 50%;
+        width: 80px;
+        height: 80px;
+    }
+
+    .PhotoCameraIcon {
+        border-radius: 50%;
+        position: absolute;
+        bottom: -5px;
+        right: 5px;
+
+        width: 20px;
+        height: 20px;
+
+        background-color: white;
+    }
+}
