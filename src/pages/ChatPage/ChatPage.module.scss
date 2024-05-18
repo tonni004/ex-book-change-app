@@ -1,13 +1,17 @@
 @import '../../styles/variables.scss';
 @import '../SearchPage/SearchPage.module.scss';
+@import '../../components/AdTemplate/AdTemplate.module.scss';
 .ChatHeader {
     position: relative;
     display: flex;
+    justify-content: space-between;
     padding: 15px 15px;
     margin: 15px 0;
     border-radius: 10px;
-    
+    width: 100%;
+
     background-color: rgba(255, 255, 255, 0.391);
+
 }
 
 .ChatImage {
@@ -48,14 +52,14 @@
 // }
 
 .FildWithoutMessage {
-    height: 400px;
+    height: calc(75vh - 70px - 15px - 15px);
 }
 
 .ScrollShadowContainer {
-    padding-bottom: 15px;
+    padding: 15px 0;
     --scroll-shadow-size: 30px; 
+    height: calc(75vh - 70px - 15px - 15px);
     width: 100%;
-    height: 400px; 
     overflow-y: auto;
     mask-image: linear-gradient(to bottom, transparent, black var(--scroll-shadow-size), black calc(100% - var(--scroll-shadow-size)), transparent);
 
@@ -72,14 +76,19 @@
     }
 }
 
+
+
 .ChatItem {
     display: flex;
 
     div {
         display: inline-block;
-        padding: 5px 10px;
+        padding: 5px 15px;
+        padding-right: 40px;
         border-radius: 25px;
-        margin-bottom: 8px;  
+        margin-bottom: 8px; 
+        
+        position: relative;
         max-width: 70%;
 
         .MessageText {
@@ -113,14 +122,18 @@
 }
 
 .MessageTime {
-    margin-left: 10px;
+    position: absolute;
+    bottom: 5px;
+    right: 11px;
     font-size: 10px;
 }
 
 .InputField {
     margin-top: 15px;
+    margin-bottom: 70px;
     position: relative;
     width: 100%;
+    height: 44px;
 
     .Textarea {
         padding: 7px 15px;
@@ -128,7 +141,7 @@
         border-radius: 10px;
 
         width: 100%;
-        height: 44px;
+        height: 45px;
         resize: none;
         background-color: rgba(255, 255, 255, 0.473);
         color: #000;
@@ -137,7 +150,7 @@
 
 .SendBtn {
     position: absolute;
-    bottom: 11px;
+    bottom: 4px;
     right: 5px;
 
     display: inline-block;

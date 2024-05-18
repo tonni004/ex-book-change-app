@@ -145,8 +145,8 @@ export default function ModalWindow() {
                                     onValueChange={setCurrency}
 
                                 >
-                                    <Radio value="UAN">
-                                        UAN &#x20b4;
+                                    <Radio value="UAH">
+                                        UAH &#x20b4;
                                     </Radio>
                                     <Radio value="USD">
                                         USD &#x24;

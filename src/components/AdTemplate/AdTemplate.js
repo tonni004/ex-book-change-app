@@ -59,7 +59,7 @@ export default function AdTemplate({ fetchAds }) {
                 return '\u0024';
             case 'EUR':
                 return '\u20AC';
-            case 'UAN':
+            case 'UAH':
                 return '\u20b4';
             default:
                 return '';
@@ -91,7 +91,7 @@ export default function AdTemplate({ fetchAds }) {
         return favouriteAds.some(ad => ad.id === adId);
     };
 
-    const onCreateNewChat = async () => {
+    const onCreateNewChat = async (adId) => {
         try {
             const newChatInfo = {
                 chatTitle: selectedAd.title,
@@ -99,8 +99,7 @@ export default function AdTemplate({ fetchAds }) {
                 userNickname: userNickname,
                 imageURL: selectedAd.imageURL,
             }
-            const chatID = await dispatch(addNewChat(newChatInfo));
-            // setCurrentChatId(dataChat.id)
+            const chatID = await dispatch(addNewChat(newChatInfo, adId));
 
             if (chatID) {
                 navigate(`/message/${chatID}`);
@@ -206,9 +205,17 @@ export default function AdTemplate({ fetchAds }) {
                                         <p className={s.AdPrice}>Price {selectedAd.price} <span>{getCurrencySymbol(selectedAd.currency)}</span></p>
                                     </div>
                                 </ModalBody>
-                                <ModalFooter>
-                                    <Button color='danger' size="lg" onClick={onCreateNewChat}>Write now</Button>
-                                    <Button color='white' size="lg" onPress={onClose}>Close</Button>
+                                <ModalFooter className={s.BtnField}>
+                                    {userNickname === selectedAd.adAuther
+                                        ? <Button color='white' size="lg" variant="ghost" onPress={onClose}>Close</Button>
+
+                                        : (
+                                            <div className={s.FieldForTwoBtn}>
+                                                <Button color='danger' size="lg" onClick={(() => onCreateNewChat(selectedAd.id))}>Write now</Button>
+                                                <Button className={s.CloseBtn} color='white' size="lg" onPress={onClose}>Close</Button>
+                                            </div>
+                                        )
+                                    }
                                 </ModalFooter>
                             </Container>
                         </ScrollShadow>

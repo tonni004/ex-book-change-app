@@ -5,19 +5,38 @@ import { editUserInfo } from '../../redux/user/user-operations';
 import EditUserInfoForm from '../../components/EditUserInfoForm/EditUserInfoForm';
 import { getUserId } from '../../redux/user/user-selectors';
 import { logout, deleteCurrentUser } from '../../api-functions/api-functions';
-import { deleteUserFromDatabase } from "../../redux/user/user-operations";
+import { deleteChatById } from '../../redux/chats/chats-operations';
+import { getCurrentChat } from '../../redux//chats/chats-selectors';
 
 import s from './HamburgerMenu.module.scss';
+import { useNavigate } from "react-router-dom";
+import DeleteNotificationModal from "../DeleteNotificationModal";
 
-export default function HamburgerMenu() {
+export default function HamburgerMenu(buttonType) {
     const dispatch = useDispatch();
+    const navigate = useNavigate();
     const userID = useSelector(getUserId);
+    const currentChat = useSelector(getCurrentChat);
     const { isOpen, onOpen, onOpenChange } = useDisclosure();
     const [isChecked, setIsChecked] = useState(false);
 
     const onLogout = useCallback(() => {
         dispatch(logout());
     }, [dispatch])
+
+
+    const onDeleteChat = useCallback(() => {
+        const chatInfo = {
+            chatId: currentChat.id,
+            adsAuther: currentChat.users.adsAuther,
+            user: currentChat.users.user,
+
+        }
+        console.log('chatInfo', chatInfo);
+
+        dispatch(deleteChatById(chatInfo));
+        navigate('/message');
+    }, [dispatch, currentChat])
 
     const onEditUserInfo = useCallback((updateUserInfo) => {
         dispatch(editUserInfo(userID, updateUserInfo));
@@ -45,22 +64,31 @@ export default function HamburgerMenu() {
             <div className={`${s.MenuField} ${isChecked ? s.open : ''}`}>
                 <div className={s.MenuBackground}></div>
                 <ul className={s.BtnList}>
-                    <li>
-                        <Button
-                            color="danger"
-                            variant="bordered"
-                            size="sm"
-                            onClick={onOpen}
-                        >Edit</Button>
-                    </li>
+                    {buttonType === "profile page"
+                        ? (<>
+                            <li>
+                                <Button
+                                    color="danger"
+                                    variant="bordered"
+                                    size="sm"
+                                    onClick={onOpen}
+                                >Edit</Button>
+                            </li>
 
-                    <li>
-                        <Button
+                            <li>
+                                <Button
+                                    color="danger"
+                                    size="sm"
+                                    onClick={onLogout}>Logout
+                                </Button>
+                            </li></>)
+                        : <Button
                             color="danger"
                             size="sm"
-                            onClick={onLogout}>Logout
+                            onClick={onDeleteChat}>Delete Chat
                         </Button>
-                    </li>
+                    }
+
                 </ul>
             </div>
 

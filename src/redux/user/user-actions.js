@@ -24,6 +24,10 @@ export const deleteUserInfoRequest = createAction('user/deleteUserInfoRequest');
 export const deleteUserInfoSuccess = createAction('user/deleteUserInfoSuccess');
 export const deleteUserInfoError = createAction('user/deleteUserInfoError');
 
+export const updateUserChatsRequest = createAction('user/updateUserChatsRequest');
+export const updateUserChatsSuccess = createAction('user/updateUserChatsSuccess');
+export const updateUserChatsError = createAction('user/updateUserChatsError');
+
 export const CLEAR_USER_INFO = 'CLEAR_USER_INFO';
 
 export const clearUserInfo = () => ({

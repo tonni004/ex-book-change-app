@@ -37,7 +37,7 @@ export default function ProfilePage() {
 
     return (
         <>
-            <HamburgerMenu />
+            <HamburgerMenu buttonType={"profile page"} />
             <DeleteNotificationModal />
             <UserProfileTemplate
                 imageURL={userInfo.imageURL}

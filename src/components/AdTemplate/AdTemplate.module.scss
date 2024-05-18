@@ -1,7 +1,7 @@
 @import '../../styles/variables';
 .CardsField {
     margin-top: 35px;
-    margin-bottom: 30px;
+    margin-bottom: 70px;
 }
 .CardItem:not(:last-child) {
 margin-bottom: 30px;
@@ -103,4 +103,18 @@ margin-bottom: 30px;
 
 .AdAutherLink {
     text-decoration: underline;
+}
+
+.BtnField {
+    display: flex;
+    justify-content:center;
+}
+
+.FieldForTwoBtn {
+    display: flex;
+    flex-direction: column;
+
+    .CloseBtn {
+        margin-top: 15px;
+    }
 }

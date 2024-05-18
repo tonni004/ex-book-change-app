@@ -44,11 +44,12 @@ export default function Form({ title, text, route, linkTitle, inputName = false,
                 <a href={route}>{linkTitle}</a>
             </div>
 
-            {inputName ? <Input type="name" variant="underlined" label="Nickname" value={nicknameValue} onValueChange={setNicknameValue} /> : null}
+            {inputName ? <Input className={s.Input} type="name" variant="underlined" label="Nickname" value={nicknameValue} onValueChange={setNicknameValue} /> : null}
             <Input
                 type="email"
                 variant="underlined"
                 label="Email"
+                className={s.Input}
                 value={emailValue}
                 isInvalid={isInvalidEmail}
                 errorMessage={isInvalidEmail && "Please enter a valid email"}
@@ -56,6 +57,7 @@ export default function Form({ title, text, route, linkTitle, inputName = false,
             <Input
                 type={isVisible ? "text" : "password"}
                 label="Password"
+                className={s.Input}
                 variant="underlined"
                 endContent={
                     <button className="focus:outline-none" type="button" onClick={toggleVisibility}>

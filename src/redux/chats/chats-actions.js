@@ -27,6 +27,10 @@ export const searchAllChatsRequest = createAction('chats/searchAllChatsRequest')
 export const searchAllChatsSuccess = createAction('chats/searchAllChatsSuccess');
 export const searchAllChatsError = createAction('chats/searchAllChatsError');
 
+export const deleteChatRequest = createAction('chats/deleteChatRequest');
+export const deleteChatSuccess = createAction('chats/deleteChatSuccess');
+export const deleteChatError = createAction('chats/deleteChatError');
+
 
 
 

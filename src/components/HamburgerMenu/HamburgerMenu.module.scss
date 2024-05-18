@@ -39,7 +39,7 @@
     transition: opacity 300ms ease-in, filter 300ms ease-in;
 
     .MenuField.open & {
-            opacity: 0.4;
+            opacity: 0.6;
             filter: blur(4px);
         }
 }

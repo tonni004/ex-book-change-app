@@ -1,4 +1,4 @@
-import { getDatabase, ref, get, push, set, query, orderByChild, equalTo, onValue } from "firebase/database";
+import { getDatabase, ref, get, push, set, query, orderByChild, equalTo, onValue, remove, child, update } from "firebase/database";
 import { toast } from 'react-toastify';
 import {
     addChatRequest,
@@ -19,32 +19,42 @@ import {
     searchAllChatsRequest,
     searchAllChatsSuccess,
     searchAllChatsError,
+    deleteChatRequest,
+    deleteChatSuccess,
+    deleteChatError
 
 } from './chats-actions';
+import { fetchUserByNicknameAndRemoveChat } from '../user/user-operations';
 
 const db = getDatabase();
 
-
-export const addNewChat = ({ chatTitle, autherNickname, userNickname, imageURL }) => async dispatch => {
+export const addNewChat = ({ chatTitle, autherNickname, userNickname, imageURL }, adID) => async dispatch => {
     dispatch(addChatRequest());
 
-    const chatRef = ref(db, 'chats/');
-    const newChatRef = push(chatRef);
-    const chatID = newChatRef.key;
-
-    const newChat = {
-        id: chatID,
-        title: chatTitle,
-        users: {
-            adsAuther: autherNickname,
-            user: userNickname,
-        },
-        imageURL: imageURL,
-        messages: [],
-    };
-
     try {
-        await set(newChatRef, newChat)
+        const existingChatID = await checkExistingChat(autherNickname, userNickname, adID);
+        if (existingChatID) {
+            dispatch(searchChatById(existingChatID));
+            return existingChatID;
+        }
+
+        const chatRef = ref(db, 'chats/');
+        const newChatRef = push(chatRef);
+        const chatID = newChatRef.key;
+
+        const newChat = {
+            id: chatID,
+            title: chatTitle,
+            users: {
+                adsAuther: autherNickname,
+                user: userNickname,
+            },
+            imageURL: imageURL,
+            adID: adID,
+            messages: [],
+        };
+
+        await set(newChatRef, newChat);
         dispatch(addChatSuccess(newChat));
         dispatch(addToUserChats(autherNickname, chatID));
         dispatch(addToUserChats(userNickname, chatID));
@@ -53,10 +63,27 @@ export const addNewChat = ({ chatTitle, autherNickname, userNickname, imageURL }
         return chatID;
     } catch (error) {
         dispatch(addChatError(error.message));
-        toast.error(`Error! New chat not created`)
-
+        toast.error(`Error! New chat not created`);
     }
-}
+};
+
+export const checkExistingChat = async (autherNickname, userNickname, adID) => {
+    const chatsRef = ref(db, 'chats/');
+    const userChatsQuery = query(chatsRef, orderByChild('users/user'), equalTo(userNickname));
+    const snapshot = await get(userChatsQuery);
+
+    if (snapshot.exists()) {
+        const chats = snapshot.val();
+        for (let chatID in chats) {
+            const chat = chats[chatID];
+            if (chat.users.adsAuther === autherNickname && chat.users.user === userNickname && chat.adID === adID) {
+                return chatID;
+            }
+        }
+    }
+
+    return null;
+};
 
 export const addToUserChats = (userNickname, chatId) => async dispatch => {
     dispatch(addToUserChatsRequest());
@@ -163,15 +190,7 @@ export const fetchUserChats = (userId) => async (dispatch) => {
 
                 if (chats.length > 0) {
                     dispatch(fetchUserChatsSuccess(chats));
-                } else {
-                    dispatch(fetchUserChatsError('No chats found for the user.'));
-                    toast.error(`Error! No chats found for the user`)
-
                 }
-            } else {
-                dispatch(fetchUserChatsError('User has no favourite chats.'));
-                toast.error(`Error! User has no favourite chats`)
-
             }
         } else {
             dispatch(fetchUserChatsError('User not found.'));
@@ -213,3 +232,20 @@ const searchAllChatsByIds = async (ids, dispatch) => {
         return [];
     }
 };
+
+export const deleteChatById = ({ chatId, adsAuther, user }) => async (dispatch) => {
+    dispatch(deleteChatRequest());
+    try {
+        const chatRef = ref(db, `chats/${chatId}`);
+        await remove(chatRef);
+        dispatch(deleteChatSuccess(chatId));
+        //  Delete chat for other user
+        // dispatch(fetchUserByNicknameAndRemoveChat(adsAuther, chatId));
+        dispatch(fetchUserByNicknameAndRemoveChat(user, chatId));
+    } catch (error) {
+        dispatch(deleteChatError(error.message));
+        toast.error(`Error! Chat not deleted`);
+    }
+};
+
+

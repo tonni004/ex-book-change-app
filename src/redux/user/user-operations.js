@@ -14,6 +14,9 @@ import {
     deleteUserInfoRequest,
     deleteUserInfoSuccess,
     deleteUserInfoError,
+    updateUserChatsRequest,
+    updateUserChatsSuccess,
+    updateUserChatsError
 } from "./user-actions";
 import { deleteCurrentUser } from '../../api-functions/api-functions';
 const db = getDatabase();
@@ -160,6 +163,41 @@ export const fetchUserByNickname = (nickname) => async dispatch => {
         dispatch(fetchUserError(error.message));
         toast.error(`Error! User not found`)
 
+        return null;
+    }
+};
+
+export const fetchUserByNicknameAndRemoveChat = (nickname, chatID) => async (dispatch) => {
+    dispatch(fetchUserRequest());
+    try {
+        const usersRef = ref(db, 'users');
+        const userQuery = query(usersRef, orderByChild('nickname'), equalTo(nickname));
+        const userSnapshot = await get(userQuery);
+
+        if (userSnapshot.exists()) {
+            const userData = userSnapshot.val();
+            const userKey = Object.keys(userData)[0];
+            const user = userData[userKey];
+
+            dispatch(fetchUserSuccess(user));
+
+            dispatch(updateUserChatsRequest());
+            const chatRef = ref(db, `users/${userKey}/userChats/${chatID}`);
+            await remove(chatRef);
+
+            dispatch(updateUserChatsSuccess());
+
+            return user;
+        } else {
+            const error = "User not found";
+            dispatch(fetchUserError(error));
+            toast.error(`Error! ${error}`);
+            return null;
+        }
+    } catch (error) {
+        dispatch(fetchUserError(error.message));
+        dispatch(updateUserChatsError(error.message));
+        toast.error(`Error! ${error.message}`);
         return null;
     }
 };
